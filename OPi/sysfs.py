@@ -83,3 +83,10 @@ def edge(pin, trigger):
     }
     with open(path, "w") as fp:
         fp.write(opts[trigger])
+
+
+def active_low(pin, value):
+    str_value = '1' if value else '0'
+    path = "/sys/class/gpio/gpio{0}/active_low".format(pin)
+    with open(path, "w") as fp:
+        fp.write(str_value)
